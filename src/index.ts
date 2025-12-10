@@ -10,6 +10,7 @@ import { registerMetadataTools } from "./tools/metadata.js";
 import { registerWikiTools } from "./tools/wiki.js";
 import { registerAttachmentTools } from "./tools/attachments.js";
 import { registerCategoryTools } from "./tools/category.js";
+import { registerVersionTools } from "./tools/versions.js";
 
 validateConfig();
 
@@ -28,6 +29,7 @@ registerMetadataTools(server, backlogApi);
 registerWikiTools(server, backlogApi);
 registerAttachmentTools(server, backlogApi);
 registerCategoryTools(server, backlogApi);
+registerVersionTools(server, backlogApi);
 
 async function main() {
   const transport = new StdioServerTransport();
