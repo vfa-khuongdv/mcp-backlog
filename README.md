@@ -28,6 +28,7 @@ This server provides tools to:
 
 You need a Backlog API Key. You can generate one in your Backlog Personal Settings > API.
 
+
 ## Usage with Claude Desktop
 
 Add the following configuration to your `claude_desktop_config.json`:
@@ -36,8 +37,8 @@ Add the following configuration to your `claude_desktop_config.json`:
 {
   "mcpServers": {
     "backlog": {
-      "command": "node",
-      "args": ["/Users/khuongdv/Desktop/projects/AI/mcp-backlog/dist/index.js"],
+      "command": "npx",
+      "args": ["-y", "@duongkhuong/mcp-backlog"],
       "env": {
         "BACKLOG_HOST": "your-space-id.backlog.com",
         "BACKLOG_API_KEY": "your_api_key_here"
@@ -55,16 +56,13 @@ Add the following configuration to your `.vscode/mcp.json`:
 {
   "servers": {
     "backlog": {
-      "command": "node",
-      "args": ["/ABSOLUTE/PATH/TO/mcp-backlog/dist/index.js"],
+     "command": "npx",
+      "args": ["-y", "@duongkhuong/mcp-backlog"],
       "env": {
-        "BACKLOG_HOST": "your-space-id.backlog.com", // not include https://
+        "BACKLOG_HOST": "your-space-id.backlog.com", 
         "BACKLOG_API_KEY": "your_api_key_here"
       }
     }
   }
 }
 ```
-
-Replace `/ABSOLUTE/PATH/TO/mcp-backlog` with the actual absolute path to this directory.
-Replace `your-space-id.backlog.com` and `your_api_key_here` with your actual Backlog credentials.
