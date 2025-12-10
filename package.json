@@ -1,6 +1,8 @@
 {
-  "name": "mcp-backlog",
+  "name": "@duongkhuong/mcp-backlog",
   "version": "1.0.0",
+  "description": "MCP server for Backlog API integration with AI agents.",
+  "mcpName": "io.github.vfa-khuongdv/mcp-backlog",
   "main": "dist/index.js",
   "type": "module",
   "bin": {
@@ -12,16 +14,25 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "devDependencies": {
+  "author": "vfa-khuongdv",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vfa-khuongdv/mcp-backlog.git"
+  },
+  "homepage": "https://github.com/vfa-khuongdv/mcp-backlog#readme",
+  "bugs": {
+    "url": "https://github.com/vfa-khuongdv/mcp-backlog/issues"
+  },
+  "dependencies": {
     "@modelcontextprotocol/sdk": "^1.24.3",
-    "@types/axios": "^0.9.36",
-    "@types/node": "^24.10.2",
     "axios": "^1.13.2",
     "dotenv": "^17.2.3",
-    "typescript": "^5.9.3",
     "zod": "^4.1.13"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.9.36",
+    "@types/node": "^24.10.2",
+    "typescript": "^5.9.3"
   }
 }
