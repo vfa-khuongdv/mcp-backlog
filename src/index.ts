@@ -9,6 +9,7 @@ import { registerProjectTools } from "./tools/projects.js";
 import { registerMetadataTools } from "./tools/metadata.js";
 import { registerWikiTools } from "./tools/wiki.js";
 import { registerAttachmentTools } from "./tools/attachments.js";
+import { registerCategoryTools } from "./tools/category.js";
 
 validateConfig();
 
@@ -26,6 +27,7 @@ registerProjectTools(server, backlogApi);
 registerMetadataTools(server, backlogApi);
 registerWikiTools(server, backlogApi);
 registerAttachmentTools(server, backlogApi);
+registerCategoryTools(server, backlogApi);
 
 async function main() {
   const transport = new StdioServerTransport();

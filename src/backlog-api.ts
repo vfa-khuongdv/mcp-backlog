@@ -15,6 +15,80 @@ export class BacklogApi {
     });
   }
 
+  // Get Space
+  async getSpace() {
+    const response = await this.client.get("/space");
+    return response.data;
+  }
+
+  // Get Recent Updates
+  async getRecentUpdates(params: any) {
+    const response = await this.client.get("/activities", { params });
+    return response.data;
+  }
+
+  // Get Space Activity
+  async getSpaceActivity(activityId: number) {
+    const response = await this.client.get(`/activities/${activityId}`);
+    return response.data;
+  }
+
+  // Get Space Logo
+  async getSpaceLogo() {
+    const response = await this.client.get("/space/image");
+    return response.data;
+  }
+
+  // Get Space Notification
+  async getSpaceNotification() {
+    const response = await this.client.get("/space/notification");
+    return response.data;
+  }
+
+  // Update Space Notification
+  async updateSpaceNotification() {
+    const response = await this.client.put("/space/notification");
+    return response.data;
+  }
+
+  // Get Space Disk Usage
+  async getSpaceDiskUsage() {
+    const response = await this.client.get("/space/diskUsage");
+    return response.data;
+  }
+
+  // Get User List
+  async getUserList() {
+    const response = await this.client.get("/users");
+    return response.data;
+  }
+
+  // Get User
+  async getUser(userId: number) {
+    const response = await this.client.get(`/users/${userId}`);
+    return response.data;
+  }
+
+  // Add User
+  async addUser(params: any) {
+    const response = await this.client.post("/users", null, { params });
+    return response.data;
+  }
+
+  // Update User
+  async updateUser(userId: number, params: any) {
+    const response = await this.client.patch(`/users/${userId}`, null, {
+      params,
+    });
+    return response.data;
+  }
+
+  // Delete User
+  async deleteUser(userId: number) {
+    const response = await this.client.delete(`/users/${userId}`);
+    return response.data;
+  }
+
   // --- Issues ---
   async createIssue(params: any) {
     const response = await this.client.post("/issues", null, { params });
@@ -157,6 +231,35 @@ export class BacklogApi {
     return response.data;
   }
 
+  async createCategory(projectIdOrKey: string, params: any) {
+    const response = await this.client.post(
+      `/projects/${projectIdOrKey}/categories`,
+      null,
+      { params }
+    );
+    return response.data;
+  }
+
+  async updateCategory(
+    projectIdOrKey: string,
+    categoryId: number,
+    params: any
+  ) {
+    const response = await this.client.patch(
+      `/projects/${projectIdOrKey}/categories/${categoryId}`,
+      null,
+      { params }
+    );
+    return response.data;
+  }
+
+  async deleteCategory(projectIdOrKey: string, categoryId: number) {
+    const response = await this.client.delete(
+      `/projects/${projectIdOrKey}/categories/${categoryId}`
+    );
+    return response.data;
+  }
+
   async listVersions(projectIdOrKey: string) {
     const response = await this.client.get(
       `/projects/${projectIdOrKey}/versions`
@@ -172,6 +275,36 @@ export class BacklogApi {
     const response = await this.client.get(
       `/projects/${projectIdOrKey}/versions`
     );
+    return response.data;
+  }
+
+  async createVersion(projectIdOrKey: string, params: any) {
+    const response = await this.client.post(
+      `/projects/${projectIdOrKey}/versions`,
+      null,
+      { params }
+    );
+    return response.data;
+  }
+
+  async updateVersion(projectIdOrKey: string, versionId: number, params: any) {
+    const response = await this.client.patch(
+      `/projects/${projectIdOrKey}/versions/${versionId}`,
+      null,
+      { params }
+    );
+    return response.data;
+  }
+
+  async deleteVersion(projectIdOrKey: string, versionId: number) {
+    const response = await this.client.delete(
+      `/projects/${projectIdOrKey}/versions/${versionId}`
+    );
+    return response.data;
+  }
+
+  async listResolutions() {
+    const response = await this.client.get("/resolutions");
     return response.data;
   }
 

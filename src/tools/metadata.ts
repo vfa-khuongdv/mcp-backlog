@@ -15,12 +15,23 @@ export function registerMetadataTools(server: McpServer, api: BacklogApi) {
   );
 
   server.registerTool(
-    "list_priorities",
-    { description: "List available priorities" },
+    "get_priority_list",
+    { description: "Get Priority List" },
     async () => {
       const priorities = await api.listPriorities();
       return {
         content: [{ type: "text", text: JSON.stringify(priorities, null, 2) }],
+      };
+    }
+  );
+
+  server.registerTool(
+    "get_resolution_list",
+    { description: "Get Resolution List" },
+    async () => {
+      const resolutions = await api.listResolutions();
+      return {
+        content: [{ type: "text", text: JSON.stringify(resolutions, null, 2) }],
       };
     }
   );
@@ -37,57 +48,15 @@ export function registerMetadataTools(server: McpServer, api: BacklogApi) {
   );
 
   server.registerTool(
-    "list_issue_types",
+    "get_issue_type_list",
     {
-      description: "List issue types for a project",
+      description: "Get issue type list of a project",
       inputSchema: { projectIdOrKey: z.string() },
     },
     async (args) => {
       const types = await api.listIssueTypes(args.projectIdOrKey);
       return {
         content: [{ type: "text", text: JSON.stringify(types, null, 2) }],
-      };
-    }
-  );
-
-  server.registerTool(
-    "list_categories",
-    {
-      description: "List categories for a project",
-      inputSchema: { projectIdOrKey: z.string() },
-    },
-    async (args) => {
-      const categories = await api.listCategories(args.projectIdOrKey);
-      return {
-        content: [{ type: "text", text: JSON.stringify(categories, null, 2) }],
-      };
-    }
-  );
-
-  server.registerTool(
-    "list_versions",
-    {
-      description: "List versions for a project",
-      inputSchema: { projectIdOrKey: z.string() },
-    },
-    async (args) => {
-      const versions = await api.listVersions(args.projectIdOrKey);
-      return {
-        content: [{ type: "text", text: JSON.stringify(versions, null, 2) }],
-      };
-    }
-  );
-
-  server.registerTool(
-    "list_milestones",
-    {
-      description: "List milestones for a project",
-      inputSchema: { projectIdOrKey: z.string() },
-    },
-    async (args) => {
-      const milestones = await api.listMilestones(args.projectIdOrKey);
-      return {
-        content: [{ type: "text", text: JSON.stringify(milestones, null, 2) }],
       };
     }
   );
